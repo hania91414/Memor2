@@ -28,10 +28,12 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
     private SQLhelper sqLhelper;
     private SQLiteDatabase db;
     private int LOADE_ID = 111;
-    private RecyclerView recyclerView;
+    private RecyclerView recyclerView, secondRecyclerView;
     private mRecyler mRecyler;
+    private secondRecycler secondRecycler;
     private int mPositon = RecyclerView.NO_POSITION;
     private int count = 0;
+    private fetchDataCursor ftData;
     private Toolbar toolbar;
     private DrawerLayout drawerLayout;
 
@@ -40,6 +42,7 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        ftData = new fetchDataCursor();
 //        initialize The DataBase
         sqLhelper = new SQLhelper(this);
 //        get access to write/read items to/from Database
@@ -58,12 +61,21 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
         translate = (EditText) findViewById(R.id.translate);
 
 
-        recyclerView = (RecyclerView) findViewById(R.id.recyclerView);
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        secondRecyclerView = (RecyclerView) findViewById(R.id.recyclerView2);
+        secondRecyclerView.setHasFixedSize(true);
+        secondRecyclerView.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
+        secondRecycler = new secondRecycler(this);
+        secondRecyclerView.setAdapter(secondRecycler);
 
+
+        recyclerView = (RecyclerView) findViewById(R.id.recyclerView);
+        recyclerView.setHasFixedSize(true);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
 
         mRecyler = new mRecyler(this);
         recyclerView.setAdapter(mRecyler);
+
+
         new ItemTouchHelper(new ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.LEFT | ItemTouchHelper.RIGHT) {
             @Override
             public boolean onMove(RecyclerView recyclerView, RecyclerView.ViewHolder viewHolder, RecyclerView.ViewHolder target) {
@@ -84,6 +96,7 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
                 getSupportLoaderManager().restartLoader(LOADE_ID, null, MainActivity.this);
             }
         }).attachToRecyclerView(recyclerView);
+
 
         getSupportLoaderManager().initLoader(LOADE_ID, null, this);
 
@@ -163,7 +176,10 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
 
     @Override
     public void onLoadFinished(Loader<Cursor> loader, Cursor data) {
+
         mRecyler.swapCursor(data);
+        secondRecycler.swapCursro(data);
+
         if (mPositon == RecyclerView.NO_POSITION) mPositon = 0;
         if (count == 0) {
             recyclerView.smoothScrollToPosition(data.getCount());
