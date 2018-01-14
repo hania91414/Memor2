@@ -2,14 +2,17 @@
 <android.support.constraint.ConstraintLayout xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="horizontal"
     xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:background="@android:color/white">
 
     <Button
         android:id="@+id/reminderButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Reminder"
+        android:text="@string/reminder"
+        android:background="@drawable/button_style1"
         app:layout_constraintEnd_toEndOf="parent"
+        android:layout_margin="@dimen/margin_for_buttons"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
