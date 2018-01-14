@@ -91,7 +91,6 @@ public class mRecyler extends RecyclerView.Adapter<mRecyler.ViewHolder> {
 
             TranslateShow = (TextView) itemView.findViewById(R.id.translate_recycler);
 
-
         }
 
         void BintTo(String mText, String mTranslate) {
