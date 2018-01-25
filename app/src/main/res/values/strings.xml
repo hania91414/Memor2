@@ -9,4 +9,11 @@
     <string name="reminder">Reminder</string>
     <string name="headline1_list">Word</string>
     <string name="headline2_list">Translation</string>
+    <string name="Tab1">Add</string>
+    <string name="Tab2">My notes</string>
+    <string name="Tab3">List of words</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="title_activity_main2">Main2Activity</string>
 </resources>
