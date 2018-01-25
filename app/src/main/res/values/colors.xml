@@ -7,4 +7,7 @@
     <color name="colorButtons2">#CE93D8</color>
     <color name="colorButtons3">#FFF9C4</color>
     <color name="colorButtons4">#FFF176</color>
+    <color name="indicatorLine">#34142C</color>
+    <color name="tabBackground">#BE8BD2</color>
+    <color name="appBar">#34142C</color>
 </resources>
