@@ -2,6 +2,7 @@ package com.example.android.memor;
 
 
 import android.content.ContentValues;
+import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
@@ -23,6 +24,7 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
+
 
 import com.example.android.memor.data.Contract;
 import com.example.android.memor.data.SQLhelper;
@@ -46,7 +48,9 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        ftData = new fetchDataCursor();
+
+
+            ftData = new fetchDataCursor();
 //        initialize The DataBase
         sqLhelper = new SQLhelper(this);
 //        get access to write/read items to/from Database
@@ -80,31 +84,28 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
         recyclerView.setAdapter(mRecyler);
 
 
-
-
-               BottomNavigationView bottomNavigationView = (BottomNavigationView)
-                findViewById(R.id.bottom_navigation);
-
-        bottomNavigationView.setOnNavigationItemSelectedListener(
-                new BottomNavigationView.OnNavigationItemSelectedListener() {
-                    @Override
-                    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                        switch (item.getItemId()) {
-                            case R.id.action_add:
-
-                                break;
-                            case R.id.action_my_words:
-
-                                break;
-
-                        }
-                        return false;
-                    }
-                });
-
-
-
-
+//        BottomNavigationView bottomNavigationView = (BottomNavigationView)
+//                findViewById(R.id.bottom_navigation);
+//
+//        bottomNavigationView.setOnNavigationItemSelectedListener(
+//                new BottomNavigationView.OnNavigationItemSelectedListener() {
+//                    @Override
+//                    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+//                        switch (item.getItemId()) {
+//                            case R.id.action_add:
+//                                Intent intent = new Intent (MainActivity.this, AddNewWord.class);
+//                                startActivity(intent);
+////
+//                                break;
+//
+//                            case R.id.action_my_words:
+////
+//                                break;
+//
+//                        }
+//                        return true;
+//                    }
+//                });
 
 
 
